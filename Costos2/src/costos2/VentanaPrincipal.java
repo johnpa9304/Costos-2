@@ -27,21 +27,154 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnMateriaPrima = new javax.swing.JButton();
+        btManoObra = new javax.swing.JButton();
+        btIndirectos = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        textMateriaPrima = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        textManoObra = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        textIndirectos = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Ventana Principal");
+
+        btnMateriaPrima.setText("Agregar Materia Prima");
+        btnMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMateriaPrimaActionPerformed(evt);
+            }
+        });
+
+        btManoObra.setText("Agregar Mano de Obra");
+        btManoObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btManoObraActionPerformed(evt);
+            }
+        });
+
+        btIndirectos.setText("Agregar Costo Indirecto");
+        btIndirectos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btIndirectosActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setText("Total Materia Prima:");
+
+        textMateriaPrima.setEditable(false);
+        textMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textMateriaPrimaActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setText("Total Mano de Obra:");
+
+        textManoObra.setEditable(false);
+        textManoObra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textManoObraActionPerformed(evt);
+            }
+        });
+
+        jLabel3.setText("Total Costos Indirectos:");
+
+        textIndirectos.setEditable(false);
+        textIndirectos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textIndirectosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textIndirectos, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel3))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btIndirectos))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(textManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btManoObra))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(textMateriaPrima, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnMateriaPrima)))
+                        .addGap(133, 133, 133))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(102, 102, 102)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnMateriaPrima))
+                            .addComponent(textMateriaPrima, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(51, 51, 51)
+                        .addComponent(btManoObra))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(38, 38, 38))
+                    .addComponent(textManoObra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btIndirectos)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(38, 38, 38))
+                    .addComponent(textIndirectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void textMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textMateriaPrimaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textMateriaPrimaActionPerformed
+
+    private void btnMateriaPrimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMateriaPrimaActionPerformed
+        VentanaMateriaPrima v1 = new VentanaMateriaPrima();
+        v1.setVisible(true);
+    }//GEN-LAST:event_btnMateriaPrimaActionPerformed
+
+    private void textManoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textManoObraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textManoObraActionPerformed
+
+    private void textIndirectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textIndirectosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textIndirectosActionPerformed
+
+    private void btManoObraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btManoObraActionPerformed
+        VentanaManoObra v2 = new VentanaManoObra();
+        v2.setVisible(true);
+    }//GEN-LAST:event_btManoObraActionPerformed
+
+    private void btIndirectosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btIndirectosActionPerformed
+        VentanaIndirectos v3 = new VentanaIndirectos();
+        v3.setVisible(true);
+    }//GEN-LAST:event_btIndirectosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +212,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btIndirectos;
+    private javax.swing.JButton btManoObra;
+    private javax.swing.JButton btnMateriaPrima;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JTextField textIndirectos;
+    private javax.swing.JTextField textManoObra;
+    private javax.swing.JTextField textMateriaPrima;
     // End of variables declaration//GEN-END:variables
 }
