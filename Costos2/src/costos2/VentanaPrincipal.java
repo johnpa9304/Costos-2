@@ -5,12 +5,19 @@
  */
 package costos2;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author tamay
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    double mPTotal = 0;
+    double sTotal = 0;
+    double iTotal = 0;
+    
+    ArrayList<MateriaPrima> materiales = new ArrayList();
+    
     /**
      * Creates new form VentanaPrincipal
      */
@@ -36,6 +43,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         textManoObra = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         textIndirectos = new javax.swing.JTextField();
+        btDatos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
@@ -88,6 +96,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        btDatos.setText("Mostrar Datos");
+        btDatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDatosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,6 +110,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btDatos)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -121,7 +139,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(102, 102, 102)
+                .addGap(59, 59, 59)
+                .addComponent(btDatos)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -176,6 +196,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         v3.setVisible(true);
     }//GEN-LAST:event_btIndirectosActionPerformed
 
+    private void btDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDatosActionPerformed
+        this.textMateriaPrima.setText(String.valueOf(mPTotal));
+        this.textManoObra.setText(String.valueOf(sTotal));
+        this.textIndirectos.setText(String.valueOf(iTotal));
+    }//GEN-LAST:event_btDatosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -209,9 +235,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 new VentanaPrincipal().setVisible(true);
             }
         });
+        
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btDatos;
     private javax.swing.JButton btIndirectos;
     private javax.swing.JButton btManoObra;
     private javax.swing.JButton btnMateriaPrima;
