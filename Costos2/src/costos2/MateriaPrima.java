@@ -21,5 +21,18 @@ public class MateriaPrima {
         this.precioU = precioU;
         this.cantidad = cantidad;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public double getPrecioU() {
+        return precioU;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+    
     
 }

@@ -5,17 +5,42 @@
  */
 package costos2;
 
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author tamay
  */
 public class VentanaMateriaPrima extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form VentanaMateriaPrima
      */
+    
+    DefaultTableModel modelo = new DefaultTableModel();
+    
+    public void cargarTabla(){
+        int ultimo = VentanaPrincipal.materiales.size()-1;
+        modelo.addRow(new Object[]{VentanaPrincipal.materiales.get(ultimo).getNombre(),VentanaPrincipal.materiales.get(ultimo).getPrecioU(),VentanaPrincipal.materiales.get(ultimo).getCantidad()});
+        /**/
+        this.tablaMateriales.setModel(modelo);        
+    }
+    
     public VentanaMateriaPrima() {
         initComponents();
+        ArrayList<Object> columna = new ArrayList<Object>();
+        columna.add("NOMBRE");
+        columna.add("PRECIO UNITARIO");
+        columna.add("CANTIDAD");
+        for ( Object e : columna){
+            modelo.addColumn(e);
+        }
+        this.tablaMateriales.setModel(modelo);
+        for (MateriaPrima m : VentanaPrincipal.materiales){
+            modelo.addRow(new Object[]{m.getNombre(),m.getPrecioU(),m.getCantidad()});
+        }
+        this.tablaMateriales.setModel(modelo);
     }
 
     /**
@@ -31,14 +56,14 @@ public class VentanaMateriaPrima extends javax.swing.JFrame {
         tablaMateriales = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtPrecio = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        txtCantidad = new javax.swing.JTextField();
+        btMaterial = new javax.swing.JButton();
+        btTotal = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
 
@@ -68,9 +93,14 @@ public class VentanaMateriaPrima extends javax.swing.JFrame {
 
         jLabel5.setText("Cantidad:");
 
-        jButton1.setText("jButton1");
+        btMaterial.setText("Agregar Material");
+        btMaterial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMaterialActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Agregar");
+        btTotal.setText("Agregar");
 
         jLabel6.setText("Agregar Directamente Materia Prima Total:");
 
@@ -91,11 +121,11 @@ public class VentanaMateriaPrima extends javax.swing.JFrame {
                             .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(41, 41, 41)
-                        .addComponent(jButton2))
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                        .addComponent(btTotal))
+                    .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btMaterial))
                 .addGap(0, 76, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -116,29 +146,36 @@ public class VentanaMateriaPrima extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(11, 11, 11)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1)
+                        .addComponent(btMaterial)
                         .addGap(24, 24, 24)
                         .addComponent(jLabel6))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
+                    .addComponent(btTotal)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btMaterialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMaterialActionPerformed
+        // TODO add your handling code here:
+        String nombre = txtNombre.getText();
+        VentanaPrincipal.materiales.add(new MateriaPrima(nombre,Double.valueOf(txtPrecio.getText()),Integer.valueOf(txtCantidad.getText())));
+        cargarTabla();
+    }//GEN-LAST:event_btMaterialActionPerformed
 
     /**
      * @param args the command line arguments
@@ -176,8 +213,8 @@ public class VentanaMateriaPrima extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btMaterial;
+    private javax.swing.JButton btTotal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -185,10 +222,10 @@ public class VentanaMateriaPrima extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTable tablaMateriales;
+    private javax.swing.JTextField txtCantidad;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }

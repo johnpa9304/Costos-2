@@ -12,11 +12,6 @@ import java.util.ArrayList;
  * @author tamay
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    double mPTotal = 0;
-    double sTotal = 0;
-    double iTotal = 0;
-    
-    ArrayList<MateriaPrima> materiales = new ArrayList();
     
     /**
      * Creates new form VentanaPrincipal
@@ -197,9 +192,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btIndirectosActionPerformed
 
     private void btDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDatosActionPerformed
-        this.textMateriaPrima.setText(String.valueOf(mPTotal));
-        this.textManoObra.setText(String.valueOf(sTotal));
-        this.textIndirectos.setText(String.valueOf(iTotal));
+        this.textMateriaPrima.setText(String.valueOf(tMateria));
+        this.textManoObra.setText(String.valueOf(tManoObra));
+        this.textIndirectos.setText(String.valueOf(tIndirectos));
     }//GEN-LAST:event_btDatosActionPerformed
 
     /**
@@ -251,4 +246,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JTextField textManoObra;
     private javax.swing.JTextField textMateriaPrima;
     // End of variables declaration//GEN-END:variables
+    //Variables publicas
+    public static double tMateria = 0;
+    public static double tManoObra = 0;
+    public static double tIndirectos = 0;
+    public static ArrayList<MateriaPrima> materiales = new ArrayList();
 }
