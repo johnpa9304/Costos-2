@@ -34,5 +34,7 @@ public class MateriaPrima {
         return cantidad;
     }
     
-    
+    public double precioTotal(){
+        return this.precioU*this.cantidad;
+    }
 }
