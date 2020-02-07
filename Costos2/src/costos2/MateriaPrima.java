@@ -21,7 +21,7 @@ public class MateriaPrima {
         this.precioU = precioU;
         this.cantidad = cantidad;
     }
-
+    //Prueba
     public String getNombre() {
         return nombre;
     }
