@@ -5,17 +5,42 @@
  */
 package costos2;
 
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author tamay
  */
 public class VentanaManoObra extends javax.swing.JFrame {
-
+    double sBasico = 0;
+    double mTotal = 0;
+    DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form VentanaManoObra
      */
+    
+    public void cargarTabla(){
+        int ultimo = VentanaPrincipal.salarios.size()-1;
+        modelo.addRow(new Object[]{VentanaPrincipal.salarios.get(ultimo).getNombre(),String.format("%.2f", VentanaPrincipal.salarios.get(ultimo).calcularTotal(sBasico)),String.format("%.2f", VentanaPrincipal.salarios.get(ultimo).calcularTotal(sBasico)/165.33)});
+        this.tablaMano.setModel(modelo);        
+    }
+    
     public VentanaManoObra() {
         initComponents();
+        ArrayList<Object> columna = new ArrayList<Object>();
+        columna.add("NOMBRE");
+        columna.add("SALARIO HORA");
+        columna.add("SALARIO TOTAL");
+        for ( Object e : columna){
+            modelo.addColumn(e);
+        }
+        this.tablaMano.setModel(modelo);
+        for (MateriaPrima m : VentanaPrincipal.materiales){
+            modelo.addRow(new Object[]{m.getNombre(),m.getPrecioU(),m.getCantidad()});
+        }
+        this.tablaMano.setModel(modelo);
     }
 
     /**
@@ -27,21 +52,208 @@ public class VentanaManoObra extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tablaMano = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txtSalario = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtHoraExtra1 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        txtHoraExtra2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        btSalario = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        txtBasico = new javax.swing.JTextField();
+        btBasico = new javax.swing.JButton();
+        btManoObraT = new javax.swing.JButton();
+        txtManoObraTotal = new javax.swing.JTextField();
+        btGuardar = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        tablaMano.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Salario Hora", "Salario Total"
+            }
+        ));
+        jScrollPane1.setViewportView(tablaMano);
+
+        jLabel1.setText("Salario:");
+
+        jLabel2.setText("Horas extra 50%:");
+
+        jLabel3.setText("Horas extra 100%:");
+
+        jLabel4.setText("Nombre:");
+
+        btSalario.setText("Agregar");
+        btSalario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btSalarioActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setText("Mano de Obra:");
+
+        btBasico.setText("Salario Basico");
+        btBasico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btBasicoActionPerformed(evt);
+            }
+        });
+
+        btManoObraT.setText("Calcular Mano de Obra Total");
+        btManoObraT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btManoObraTActionPerformed(evt);
+            }
+        });
+
+        txtManoObraTotal.setEditable(false);
+
+        btGuardar.setText("Guardar");
+        btGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btGuardarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtBasico, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(32, 32, 32)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btGuardar)
+                                    .addComponent(btBasico))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(48, 48, 48)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel1)
+                                        .addComponent(txtSalario)
+                                        .addComponent(jLabel2)
+                                        .addComponent(txtHoraExtra1)
+                                        .addComponent(jLabel3)
+                                        .addComponent(txtHoraExtra2)
+                                        .addComponent(jLabel4)
+                                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
+                                    .addComponent(btSalario)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtManoObraTotal, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btManoObraT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 80, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtHoraExtra1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtHoraExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btSalario)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBasico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btBasico))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btManoObraT)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtManoObraTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btGuardar))
+                .addGap(23, 23, 23))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btBasicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btBasicoActionPerformed
+        // TODO add your handling code here:
+        if (this.txtBasico.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "los datos no pueden estar vacios");
+        }else{
+            this.sBasico = Double.valueOf(this.txtBasico.getText());
+        }
+    }//GEN-LAST:event_btBasicoActionPerformed
+
+    private void btSalarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalarioActionPerformed
+        // TODO add your handling code here:
+        String nombre = txtNombre.getText();
+        String salario = this.txtSalario.getText();
+        String horaExtra1 = this.txtHoraExtra1.getText();
+        String horaExtra2 = this.txtHoraExtra2.getText();
+        
+        if (nombre.equalsIgnoreCase("") || salario.equalsIgnoreCase("") || horaExtra1.equalsIgnoreCase("") || horaExtra2.equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "los datos no pueden estar vacios");
+        }else if (Double.valueOf(salario)==0){
+            JOptionPane.showMessageDialog(null, "No puedes ingresar una cantidad 0 para salario");
+        }else if (this.sBasico==0){
+            JOptionPane.showMessageDialog(null, "El salario basico no puede ser cero o no se ha ingresado");
+        }else{
+            VentanaPrincipal.salarios.add(new Salario(nombre,Double.valueOf(salario),Integer.valueOf(horaExtra1),Integer.valueOf(horaExtra2)));
+            cargarTabla();
+        }
+        
+        this.txtNombre.setText("");
+        this.txtSalario.setText("");
+        this.txtHoraExtra1.setText("");
+        this.txtHoraExtra2.setText("");
+    }//GEN-LAST:event_btSalarioActionPerformed
+
+    private void btManoObraTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btManoObraTActionPerformed
+        // TODO add your handling code here:
+        this.mTotal = 0;
+        for (Salario s : VentanaPrincipal.salarios){
+            this.mTotal = this.mTotal + s.calcularTotal(this.sBasico);
+        }
+        
+        this.txtManoObraTotal.setText(String.format("%.2f", this.mTotal));
+        
+    }//GEN-LAST:event_btManoObraTActionPerformed
+
+    private void btGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGuardarActionPerformed
+        // TODO add your handling code here:
+        VentanaPrincipal.tManoObra = this.mTotal;
+    }//GEN-LAST:event_btGuardarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +291,22 @@ public class VentanaManoObra extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btBasico;
+    private javax.swing.JButton btGuardar;
+    private javax.swing.JButton btManoObraT;
+    private javax.swing.JButton btSalario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tablaMano;
+    private javax.swing.JTextField txtBasico;
+    private javax.swing.JTextField txtHoraExtra1;
+    private javax.swing.JTextField txtHoraExtra2;
+    private javax.swing.JTextField txtManoObraTotal;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtSalario;
     // End of variables declaration//GEN-END:variables
 }

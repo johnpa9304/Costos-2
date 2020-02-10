@@ -140,7 +140,11 @@ public class VentanaMateriaPrima extends javax.swing.JFrame {
 
         jLabel8.setText("Total Precio Unitario:");
 
+        txtPrecioU.setEditable(false);
+
         jLabel9.setText("Total Precio por todas la Unidades:");
+
+        txtPrecioT.setEditable(false);
 
         btGuardar.setText("Guardar");
         btGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -291,8 +295,8 @@ public class VentanaMateriaPrima extends javax.swing.JFrame {
         
         this.precioTotal = this.precioUnitario*this.unidades;
         
-        this.txtPrecioU.setText(String.valueOf(this.precioUnitario));
-        this.txtPrecioT.setText(String.valueOf(this.precioTotal));
+        this.txtPrecioU.setText(String.format("%.2f", this.precioUnitario));
+        this.txtPrecioT.setText(String.format("%.2f", this.precioTotal));
         
         this.precioUnitario = 0;
     }//GEN-LAST:event_btCalcularActionPerformed
