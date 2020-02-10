@@ -37,8 +37,8 @@ public class VentanaManoObra extends javax.swing.JFrame {
             modelo.addColumn(e);
         }
         this.tablaMano.setModel(modelo);
-        for (MateriaPrima m : VentanaPrincipal.materiales){
-            modelo.addRow(new Object[]{m.getNombre(),m.getPrecioU(),m.getCantidad()});
+        for (Salario s : VentanaPrincipal.salarios){
+            modelo.addRow(new Object[]{s.getNombre(),String.format("%.2f", s.calcularTotal(sBasico)),String.format("%.2f", s.calcularTotal(sBasico)/165.33)});
         }
         this.tablaMano.setModel(modelo);
     }
@@ -71,6 +71,7 @@ public class VentanaManoObra extends javax.swing.JFrame {
         btGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
 
         tablaMano.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -162,7 +163,7 @@ public class VentanaManoObra extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(txtManoObraTotal, javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(btManoObraT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 80, Short.MAX_VALUE))))
+                        .addGap(0, 20, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

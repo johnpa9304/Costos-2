@@ -6,6 +6,7 @@
 package costos2;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,17 +40,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         textIndirectos = new javax.swing.JTextField();
         btDatos = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtUnidades = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btUnidades = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtCostoUnidades = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        txtCostoT = new javax.swing.JTextField();
+        btCalcularT = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Ventana Principal");
+        setResizable(false);
 
         btnMateriaPrima.setText("Agregar Materia Prima");
         btnMateriaPrima.addActionListener(new java.awt.event.ActionListener() {
@@ -108,17 +111,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         jLabel4.setText("Ingrese la cantdad de unidades a producir:");
 
-        jButton1.setText("Agregar");
+        btUnidades.setText("Agregar");
+        btUnidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUnidadesActionPerformed(evt);
+            }
+        });
 
         jLabel5.setText("Total Costos de Fabricacion por unidad:");
 
-        jTextField2.setEditable(false);
+        txtCostoUnidades.setEditable(false);
 
         jLabel6.setText("Total Costos de Fabricacion:");
 
-        jTextField3.setEditable(false);
+        txtCostoT.setEditable(false);
 
-        jButton2.setText("Calcular");
+        btCalcularT.setText("Calcular");
+        btCalcularT.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCalcularTActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setText("Tutorio de Contabilidad y Costos por Jhon Pe;a");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,6 +143,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(126, 126, 126)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -148,20 +167,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addGroup(layout.createSequentialGroup()
-                                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton1))
+                                            .addComponent(btUnidades))
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(textIndirectos, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel3)))
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jLabel6)
                                         .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField2)
-                                        .addComponent(jTextField3)))
+                                        .addComponent(txtCostoUnidades)
+                                        .addComponent(txtCostoT)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton2)
+                                    .addComponent(btCalcularT)
                                     .addComponent(btIndirectos))))
                         .addGap(133, 133, 133))
                     .addGroup(layout.createSequentialGroup()
@@ -171,7 +190,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(59, 59, 59)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
                 .addComponent(btDatos)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -195,23 +216,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(jLabel3)
                         .addGap(38, 38, 38))
                     .addComponent(textIndirectos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(txtUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btUnidades))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
+                    .addComponent(txtCostoUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btCalcularT))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addComponent(txtCostoT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -245,10 +266,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_btIndirectosActionPerformed
 
     private void btDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDatosActionPerformed
-        this.textMateriaPrima.setText(String.format("%.2f", this.textMateriaPrima));
-        this.textManoObra.setText(String.format("%.2f", this.textManoObra));
-        this.textIndirectos.setText(String.format("%.2f", this.textIndirectos));
+        this.textMateriaPrima.setText(String.format("%.2f", this.tMateria));
+        this.textManoObra.setText(String.format("%.2f", this.tManoObra));
+        this.textIndirectos.setText(String.format("%.2f", this.tIndirectos));
     }//GEN-LAST:event_btDatosActionPerformed
+
+    private void btUnidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUnidadesActionPerformed
+        // TODO add your handling code here:
+        if (this.txtUnidades.getText().equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(null, "los datos no pueden estar vacios");
+        }else{
+            this.unidades = Integer.valueOf(this.txtUnidades.getText());
+        }
+    }//GEN-LAST:event_btUnidadesActionPerformed
+
+    private void btCalcularTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCalcularTActionPerformed
+        // TODO add your handling code here:
+        this.total = this.tMateria+this.tManoObra+this.tIndirectos;
+        this.txtCostoUnidades.setText(String.format("%.2f", this.total/this.unidades));
+        this.txtCostoT.setText(String.format("%.2f", this.total));
+        this.total = 0;
+    }//GEN-LAST:event_btCalcularTActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,24 +326,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btCalcularT;
     private javax.swing.JButton btDatos;
     private javax.swing.JButton btIndirectos;
     private javax.swing.JButton btManoObra;
+    private javax.swing.JButton btUnidades;
     private javax.swing.JButton btnMateriaPrima;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField textIndirectos;
     private javax.swing.JTextField textManoObra;
     private javax.swing.JTextField textMateriaPrima;
+    private javax.swing.JTextField txtCostoT;
+    private javax.swing.JTextField txtCostoUnidades;
+    private javax.swing.JTextField txtUnidades;
     // End of variables declaration//GEN-END:variables
     //Variables publicas
     public static double tMateria = 0;
@@ -313,4 +352,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public static double tIndirectos = 0;
     public static ArrayList<MateriaPrima> materiales = new ArrayList();
     public static ArrayList<Salario> salarios = new ArrayList();
+    public static ArrayList<Indirectos> indirectos = new ArrayList();
+    int unidades = 0;
+    double total = 0;
 }
