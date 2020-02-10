@@ -71,6 +71,7 @@ public class VentanaManoObra extends javax.swing.JFrame {
         btGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Mano de Obra");
         setResizable(false);
 
         tablaMano.setModel(new javax.swing.table.DefaultTableModel(

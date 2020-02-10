@@ -81,6 +81,7 @@ public class VentanaMateriaPrima extends javax.swing.JFrame {
         btGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Materia Prima");
         setResizable(false);
 
         tablaMateriales.setModel(new javax.swing.table.DefaultTableModel(

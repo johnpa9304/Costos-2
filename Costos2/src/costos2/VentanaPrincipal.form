@@ -270,7 +270,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Dialog" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Tutorio de Contabilidad y Costos por Jhon Pe;a"/>
+        <Property name="text" type="java.lang.String" value="Tutorio de Contabilidad y Costos por Jhon Pe&#xf1;a"/>
       </Properties>
     </Component>
   </SubComponents>

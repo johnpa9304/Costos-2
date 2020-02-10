@@ -134,7 +134,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setText("Tutorio de Contabilidad y Costos por Jhon Pe;a");
+        jLabel7.setText("Tutorio de Contabilidad y Costos por Jhon Peña");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
