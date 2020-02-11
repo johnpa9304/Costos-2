@@ -16,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
 public class VentanaManoObra extends javax.swing.JFrame {
     double sBasico = 0;
     double mTotal = 0;
+    int hora = 0;
+    int unidades = 0;
     DefaultTableModel modelo = new DefaultTableModel();
     /**
      * Creates new form VentanaManoObra
@@ -69,6 +71,13 @@ public class VentanaManoObra extends javax.swing.JFrame {
         btManoObraT = new javax.swing.JButton();
         txtManoObraTotal = new javax.swing.JTextField();
         btGuardar = new javax.swing.JButton();
+        txtHoras = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        btHora = new javax.swing.JButton();
+        btEnviar = new javax.swing.JButton();
+        txtTotalHoras = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtUnidades = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Mano de Obra");
@@ -128,6 +137,26 @@ public class VentanaManoObra extends javax.swing.JFrame {
             }
         });
 
+        jLabel6.setText("Horas Trabajadas:");
+
+        btHora.setText("Hora");
+        btHora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btHoraActionPerformed(evt);
+            }
+        });
+
+        btEnviar.setText("Enviar");
+        btEnviar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEnviarActionPerformed(evt);
+            }
+        });
+
+        txtTotalHoras.setEditable(false);
+
+        jLabel7.setText("Unidades:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,36 +164,43 @@ public class VentanaManoObra extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtBasico, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtBasico, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(btGuardar)
-                                    .addComponent(btBasico))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btGuardar)
+                            .addComponent(btBasico)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(txtManoObraTotal, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btManoObraT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(48, 48, 48)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel1)
-                                        .addComponent(txtSalario)
-                                        .addComponent(jLabel2)
-                                        .addComponent(txtHoraExtra1)
-                                        .addComponent(jLabel3)
-                                        .addComponent(txtHoraExtra2)
-                                        .addComponent(jLabel4)
-                                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE))
-                                    .addComponent(btSalario)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtManoObraTotal, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(btManoObraT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 20, Short.MAX_VALUE))))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel1)
+                                .addComponent(txtSalario)
+                                .addComponent(jLabel2)
+                                .addComponent(txtHoraExtra1)
+                                .addComponent(jLabel3)
+                                .addComponent(txtHoraExtra2)
+                                .addComponent(jLabel4)
+                                .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                                .addComponent(btSalario)
+                                .addComponent(jLabel6)
+                                .addComponent(txtHoras)
+                                .addComponent(btHora)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(btEnviar)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtTotalHoras)))
+                            .addComponent(jLabel7)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(txtUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,17 +228,33 @@ public class VentanaManoObra extends javax.swing.JFrame {
                         .addComponent(txtHoraExtra2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btSalario)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtBasico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btBasico))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btManoObraT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtManoObraTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btGuardar)
+                            .addComponent(txtUnidades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(5, 5, 5)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btHora)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBasico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btBasico))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btManoObraT)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtManoObraTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btGuardar))
-                .addGap(23, 23, 23))
+                    .addComponent(btEnviar)
+                    .addComponent(txtTotalHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -257,6 +309,23 @@ public class VentanaManoObra extends javax.swing.JFrame {
         VentanaPrincipal.tManoObra = this.mTotal;
     }//GEN-LAST:event_btGuardarActionPerformed
 
+    private void btHoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btHoraActionPerformed
+        // TODO add your handling code here:
+        this.hora = Integer.valueOf(this.txtHoras.getText());
+        this.unidades = Integer.valueOf(this.txtUnidades.getText());
+    }//GEN-LAST:event_btHoraActionPerformed
+
+    private void btEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnviarActionPerformed
+        // TODO add your handling code here:
+        this.mTotal = 0;
+        for (Salario s : VentanaPrincipal.salarios){
+            this.mTotal = this.mTotal + (s.calcularTotal(this.sBasico)/165.33)*this.hora;
+        }
+        this.mTotal = this.mTotal*this.unidades;
+        this.txtTotalHoras.setText(String.format("%.2f", this.mTotal));
+        VentanaPrincipal.tManoObra = this.mTotal;
+    }//GEN-LAST:event_btEnviarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -294,7 +363,9 @@ public class VentanaManoObra extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBasico;
+    private javax.swing.JButton btEnviar;
     private javax.swing.JButton btGuardar;
+    private javax.swing.JButton btHora;
     private javax.swing.JButton btManoObraT;
     private javax.swing.JButton btSalario;
     private javax.swing.JLabel jLabel1;
@@ -302,13 +373,18 @@ public class VentanaManoObra extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tablaMano;
     private javax.swing.JTextField txtBasico;
     private javax.swing.JTextField txtHoraExtra1;
     private javax.swing.JTextField txtHoraExtra2;
+    private javax.swing.JTextField txtHoras;
     private javax.swing.JTextField txtManoObraTotal;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtSalario;
+    private javax.swing.JTextField txtTotalHoras;
+    private javax.swing.JTextField txtUnidades;
     // End of variables declaration//GEN-END:variables
 }
